@@ -8,6 +8,8 @@ The third prototype for this project shrank the design to 64 electrodes to permi
 The directory named *Altium Library* contains the schematic libraries containing the custom footprints and symbols made for components on this project.
 
 Photo gallery (screenshots/images of work I did that I thought were interesting from this project): 
+
+
 <img width="301" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/21c53e19-e751-4426-84dc-2db7f9d56ce1">
 <img width="201" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/1101454b-aa52-4309-adf9-ae972d629cf6">
 <img width="245" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/3ee0cbcc-fa3a-4c61-914a-d23cbf7a93e2">
