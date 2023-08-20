@@ -1,1 +1,1 @@
-This directory contains Altium library files containing all the relevant schematics, footprints, and associations of the two for the project.
+This directory contains Altium library files containing all the relevant schematics, footprints, and associations of the two for every wafer made and for each custom component on the stimulation board. 
