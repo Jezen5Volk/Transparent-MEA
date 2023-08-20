@@ -10,10 +10,10 @@ The directory named *Altium Library* contains the schematic libraries containing
 Photo gallery (screenshots/images of work I did that I thought were interesting from this project): 
 
 
-<img width="301" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/21c53e19-e751-4426-84dc-2db7f9d56ce1">
-<img width="201" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/1101454b-aa52-4309-adf9-ae972d629cf6">
-<img width="245" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/3ee0cbcc-fa3a-4c61-914a-d23cbf7a93e2">
-<img width="209" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/fb3f63e8-4e5f-45d2-b726-a38d19e805f3">
+<img width="200" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/21c53e19-e751-4426-84dc-2db7f9d56ce1">
+<img width="200" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/1101454b-aa52-4309-adf9-ae972d629cf6">
+<img width="200" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/3ee0cbcc-fa3a-4c61-914a-d23cbf7a93e2">
+<img width="200" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/fb3f63e8-4e5f-45d2-b726-a38d19e805f3">
 <img width="419" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/39d0fadf-98ca-42cb-b97b-8c7b9a755447">
 <img width="329" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/a18e7ec0-1dde-4968-a42a-5d940073248c">
 <img width="254" alt="image" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/37b1fd69-0580-4a94-841b-c0cb8cba45d0">
