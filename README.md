@@ -11,7 +11,7 @@ Photo gallery (screenshots/images of work I did that I thought were interesting 
 
 
 
-<img width="225" alt="400 electrode wafer" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/3ee0cbcc-fa3a-4c61-914a-d23cbf7a93e2">
+<img width="200" alt="400 electrode wafer" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/3ee0cbcc-fa3a-4c61-914a-d23cbf7a93e2">
 <img width="200" alt="324 electrode wafer" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/fb3f63e8-4e5f-45d2-b726-a38d19e805f3">
 <img width="200" alt="64 electrode wafer" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/21c53e19-e751-4426-84dc-2db7f9d56ce1">
 <img width="200" alt="Top MEA PCB" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/1101454b-aa52-4309-adf9-ae972d629cf6">
