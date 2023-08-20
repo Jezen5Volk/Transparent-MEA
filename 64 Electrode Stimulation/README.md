@@ -1,1 +1,1 @@
-df
+This directory holds all files related to 64 electrode wafers. The Stimulation Board directory contains all relevant files for the PCB I designed which contains electronics for sending signals to the 64 electrode MEA on the PCB. The 64 Electrode Wafer directory contains all relevant files for the 64 channel electrode
