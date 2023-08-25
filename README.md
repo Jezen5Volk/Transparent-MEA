@@ -7,7 +7,7 @@ The third prototype for this project shrank the design to 64 electrodes to permi
 
 The directory named *Altium Library* contains the schematic libraries containing the custom footprints and symbols made for components on this project.
 
-Photo gallery (screenshots/images of work I did that I thought were interesting from this project): 
+Photo gallery (screenshots/images of work I did that I thought was interesting from this project): 
 
 
 
