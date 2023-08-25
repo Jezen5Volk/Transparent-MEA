@@ -1,7 +1,7 @@
 [OutputDatabaseLinkFile]
 Version=1.1
 [DatabaseLinks]
-ConnectionString=Provider=MICROSOFT.ACE.OLEDB.12.0;Data Source=C:\Users\dylan\Mazin Lab\Bouwmeester Lab\altium-library\Celestial.mdb;Persist Security Info=False
+ConnectionString=Provider=MICROSOFT.ACE.OLEDB.12.0;Data Source=C:\Users\dylan\Bouwmeester Lab\Transparent MEAs\altium-library\Celestial.mdb;Persist Security Info=False
 AddMode=3
 RemoveMode=1
 UpdateMode=2
@@ -458,6 +458,9 @@ TableName=Sensor - Thermocouple
 Enabled=True
 UserWhere=0
 UserWhereText=
+BrowserOrder_Sorting=
+BrowserOrder_Grouping=
+BrowserOrder_Visible=Part Number0=147|Description0=316|Footprint Ref0=217|Footprint Path0=211|Library Ref0=163|Library Path0=243|Footprint Ref 20=153|Footprint Path 20=164|Footprint Ref 30=153|Footprint Path 30=164|PartId0=86|Value0=83|Comment0=135|Manufacturer0=158|Supplier 10=116|Supplier Part Number 10=220|ComponentLink1Description0=256|ComponentLink1URL0=788|ComponentLink2Description0=256|ComponentLink2URL0=771|ComponentLink3Description0=256|ComponentLink3URL0=200|Supplier 20=116|Supplier Part Number 20=220|Price0=77|Type0=275|Device Package0=331|Series0=84|Input Type0=197|Output Type0=136|Interface0=107|Current Supply0=154|Operating Temperature0=220
 [Table74]
 SchemaName=
 TableName=Silicon Die Holders
@@ -466,7 +469,7 @@ UserWhere=0
 UserWhereText=
 BrowserOrder_Sorting=
 BrowserOrder_Grouping=
-BrowserOrder_Visible=Part Number0=250|Description0=418|FootprintRef0=270|FootprintPath0=290|SymbolRef0=197|SymbolPath0=275|Value0=83|Comment0=116|MfrPartNo0=120|Manufacturer0=143|Supplier10=111|Supplier1PartNo0=165|ComponentLink1Description0=256|ComponentLink1URL0=200|ComponentLink2Description0=256|ComponentLink2URL0=200|ComponentLink3Description0=256|ComponentLink3URL0=200|FootprintRef20=143|FootprintPath20=154|FootprintRef30=143|FootprintPath30=154|Type0=76
+BrowserOrder_Visible=Part Number0=324|Description0=418|FootprintRef0=349|FootprintPath0=290|SymbolRef0=197|SymbolPath0=275|Value0=83|Comment0=116|MfrPartNo0=120|Manufacturer0=143|Supplier10=111|Supplier1PartNo0=165|ComponentLink1Description0=256|ComponentLink1URL0=200|ComponentLink2Description0=256|ComponentLink2URL0=200|ComponentLink3Description0=256|ComponentLink3URL0=200|FootprintRef20=143|FootprintPath20=154|FootprintRef30=143|FootprintPath30=154|Type0=76
 [Table75]
 SchemaName=
 TableName=Test Point
