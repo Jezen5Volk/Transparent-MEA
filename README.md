@@ -16,7 +16,7 @@ Photo gallery (screenshots/images of work I did that I thought was interesting f
 <img width="200" alt="64 electrode wafer" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/21c53e19-e751-4426-84dc-2db7f9d56ce1">
 <img width="200" alt="Top MEA PCB" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/1101454b-aa52-4309-adf9-ae972d629cf6">
 <img width="200" alt="64 electrode wafer 3 mm by 3mm" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/090ad772-bba6-451b-a03e-b51ea1f8d2a2">
-<img width="400" alt="Inverted Microscope Stim PCB" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/7c98e477-f961-4e06-94cd-82586c3e039d">
+<img width="200" alt="Inverted Microscope Stim PCB" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/7c98e477-f961-4e06-94cd-82586c3e039d">
 <img width="419" alt="324 electrode sensing area close up" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/39d0fadf-98ca-42cb-b97b-8c7b9a755447">
 <img width="329" alt="gold bond pads wafer" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/a18e7ec0-1dde-4968-a42a-5d940073248c">
 <img width="254" alt="Gold wire bonds" src="https://github.com/Jezen5Volk/Transparent-MEA/assets/138075884/37b1fd69-0580-4a94-841b-c0cb8cba45d0">
