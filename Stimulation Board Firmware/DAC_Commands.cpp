@@ -1,3 +1,3 @@
 #include <DAC_Commands.h>
-#include <Ardunio.h>
+#include <Arduino.h>
 #include <SPI.h>
