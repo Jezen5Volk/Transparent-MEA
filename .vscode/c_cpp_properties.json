@@ -3,7 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
+                "/Users/dylan/Bouwmeester Lab/Transparent MEAs/Stimulation Board Firmware/**",
                 "/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/**",
                 "/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino",
                 "/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src",
