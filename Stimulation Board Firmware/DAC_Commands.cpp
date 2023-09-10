@@ -1,6 +1,13 @@
 #include <DAC_Commands.h>
 #include <Arduino.h>
 #include <SPI.h>
+#include <elapsedMillis.h>
+
+/*------------------
+Variable Definitions
+------------------*/
+elapsedMicros RESET_timer;
+elapsedMillis seq_delay;
 
 /*-----------------
 Low Level Functions

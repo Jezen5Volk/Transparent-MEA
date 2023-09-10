@@ -7,12 +7,14 @@
                 "/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/**",
                 "/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino",
                 "/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/src",
-                "/Program Files (x86)/Arduino/hardware/arduino/avr/variants/ethernet"
+                "/Program Files (x86)/Arduino/hardware/arduino/avr/variants/ethernet",
+                "/Users/dylan/OneDrive/Documents/Arduino/libraries/elapsedMillis"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
-                "_UNICODE"
+                "_UNICODE",
+                "ARDUINO=10813"
             ],
             "windowsSdkVersion": "10.0.19041.0",
             "compilerPath": "cl.exe",

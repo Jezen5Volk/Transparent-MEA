@@ -18,6 +18,7 @@
 #define REGISTER_14 0b1110
 #define REGISTER_15 0b1111
 
+#define RESET 10
 #define SYNCpin 14
 #define LDACpin 15
 
