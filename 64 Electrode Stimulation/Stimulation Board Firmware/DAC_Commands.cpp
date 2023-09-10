@@ -3,23 +3,23 @@
 #include <SPI.h>
 #include <elapsedMillis.h>
 
-/*------------------
-Variable Definitions
-------------------*/
-elapsedMicros RESET_timer;
-elapsedMillis seq_delay;
-
 /*-----------------
 Low Level Functions
 -----------------*/
 
 void xfer_data(void* data, int size){
-
+    digitalWrite(SYNCpin, LOW);
+    SPI.transfer(data, size);
+    digitalWrite(SYNCpin, HIGH);
 };
 
 //Resets to zero scale
 void reset(){
-
+    digitalWrite(RESETpin, LOW);
+    elapsedMicros RESET_timer;
+    if (RESET_timer >= 1){
+        digitalWrite(RESETpin, HIGH);
+    };
 }; 
 
 

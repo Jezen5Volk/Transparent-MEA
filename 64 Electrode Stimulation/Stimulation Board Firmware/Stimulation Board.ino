@@ -27,8 +27,10 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 void setup(){
 
     //Setting up output pins
+    pinMode(RESETpin, OUTPUT);
     pinMode(SYNCpin, OUTPUT); 
     pinMode(LDACpin, OUTPUT); 
+    digitalWrite(RESETpin,HIGH); //When RESET is activated, the input register and the DAC register are updated with zero-scale
     digitalWrite(SYNCpin, HIGH); //Bring the SYNC line low to begin the write sequence
     digitalWrite(LDACpin, HIGH); //When LDAC is low, the input registers for all DACs are transparent
 
