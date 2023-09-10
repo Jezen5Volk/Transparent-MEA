@@ -26,15 +26,15 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 void setup(){
 
+    //Setting up output pins
+    pinMode(SYNCpin, OUTPUT); 
+    pinMode(LDACpin, OUTPUT); 
+    digitalWrite(SYNCpin, HIGH); //Bring the SYNC line low to begin the write sequence
+    digitalWrite(LDACpin, HIGH); //When LDAC is low, the input registers for all DACs are transparent
+
     //SPI Initialization
     SPI.begin();
     SPI.beginTransaction(SPISettings(50000000, MSBFIRST, SPI_MODE0));
-    pinMode(14, OUTPUT); //SYNC Pin
-    pinMode(15, OUTPUT); //LDAC Pin
-
-    //Idle State
-    digitalWrite(14, HIGH); //Bring the SYNC line low to begin the write sequence
-    digitalWrite(15, HIGH); //When LDAC is low, the input registers for all DACs are transparent
 
 };
 
