@@ -15,7 +15,7 @@ class DAC
     /*-----------------
     Low Level Functions
     -----------------*/
-    void xfer_data(void* data, int size);
+    void xfer_data(std::string data);
     void reset(); //Resets to zero scale
 
     /*--------------------
