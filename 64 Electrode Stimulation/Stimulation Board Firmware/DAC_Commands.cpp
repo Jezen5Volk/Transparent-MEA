@@ -55,6 +55,26 @@ Medium Level Functions
 //Daisy Chain Enable
 void DCEN(){
 
+    //Make data strings to transfer
+    std::string DCEN_cmd = std::bitset<4>(1000).to_string(); //1000 command: Set up the daisy-chain enable (DCEN) register
+    std::string DCEN = std::bitset<20>(1).to_string(); //toggling LSB enables/disables daisy chain mode
+    std::string DCEN_word = DCEN_cmd + DCEN;
+    std::string no_op = std::bitset<24>(0).flip().to_string(); //1111 command: no operation, in daisy chain mode
+
+    //Enable Daisy Chaining on each DAC sequentially starting at DAC 1
+    for(int i = 1; i <= N_DACS; i++){
+        std::string data_word;
+        for(int j = 0; j < i; j++){
+            if(j == 0){
+                data_word = DCEN_word;
+            }
+            else{
+                data_word = data_word + no_op;
+            }
+        }
+        xfer_data(data_word, i*3);
+    }
+
 };   
     
 //Write a voltage to a DAC Register
@@ -75,7 +95,7 @@ void write_DAC_reg(float voltage, int reg){
 
     //Combine voltage word with no operation command for data word for all DACs
     std::string data_word;
-    std::string no_op = std::bitset<24>(1111).to_string(); //1111 command: no operation, in daisy chain mode
+    std::string no_op = std::bitset<24>(0).flip().to_string(); //1111 command: no operation, in daisy chain mode
     for (int i = N_DACS; i > 0; i--){
         if (i == DAC_num + 1){
             data_word = data_word + voltage_word;
