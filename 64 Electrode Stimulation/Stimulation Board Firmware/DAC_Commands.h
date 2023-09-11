@@ -15,7 +15,7 @@ class DAC
     /*-----------------
     Low Level Functions
     -----------------*/
-    void xfer_data(std::string data);
+    void xfer_data(std::string data, int size);
     void reset(); //Resets to zero scale
 
     /*--------------------
@@ -28,8 +28,8 @@ class DAC
     High Level Functions
     ------------------*/
     void ref_reset(); //Resets all DAC outputs to REF voltage (2.5 V) 
-    void sync_write(float voltage, int regs[]); //Writes voltage to selected registers simultaneously
-    void seq_write(float voltage, int regs[], int delay_msec); //Writes voltage to selected registers sequentially with delay in mSec
+    void sync_write(float voltage, std::vector<int> regs); //Writes voltage to selected registers simultaneously
+    void seq_write(float voltage, std::vector<int> regs, int delay_msec); //Writes voltage to selected registers sequentially with delay in mSec
 };
 
 

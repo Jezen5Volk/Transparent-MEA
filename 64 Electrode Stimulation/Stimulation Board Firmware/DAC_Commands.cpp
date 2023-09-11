@@ -5,6 +5,7 @@
 #include <cmath>
 #include <bitset>
 #include <string>
+#include <vector> 
 
 //3rd Party Headers
 #include <Arduino.h>
@@ -16,11 +17,11 @@
 Low Level Functions
 -----------------*/
 
-void xfer_data(std::string data){
+void xfer_data(std::string data, int size){
 
     //Convert binary string into array of bytes, MSB First
-    uint8_t byte_stream[3*N_DACS];
-    for (int i = 0; i < 3*N_DACS; i++){
+    std::vector<uint8_t> byte_stream;
+    for (int i = 0; i < size; i++){
       std::string byte_string = data.substr(i*8, 8);
       uint8_t byte = std::bitset<8>(byte_string).to_ulong();
       byte_stream[i] = byte;
@@ -74,7 +75,7 @@ void write_DAC_reg(float voltage, int reg){
 
     //Combine voltage word with no operation command for data word for all DACs
     std::string data_word;
-    std::string no_op = std::bitset<24>(0000).to_string(); //0000 command: no operation
+    std::string no_op = std::bitset<24>(1111).to_string(); //1111 command: no operation, in daisy chain mode
     for (int i = N_DACS; i > 0; i--){
         if (i == DAC_num + 1){
             data_word = data_word + voltage_word;
@@ -85,7 +86,7 @@ void write_DAC_reg(float voltage, int reg){
     }
     
     //Send data word through SPI
-    xfer_data(data_word);
+    xfer_data(data_word, N_DACS*3);
 
 }; 
 
@@ -111,7 +112,7 @@ void ref_reset(){
 }; 
 
 //Writes voltage to selected registers simultaneously
-void sync_write(float voltage, int regs[]){
+void sync_write(float voltage, std::vector<int> regs){
 
     for(int i = 0; i < sizeof(regs) - 1; i++){
         write_DAC_reg(voltage, regs[i]);
@@ -128,7 +129,7 @@ void sync_write(float voltage, int regs[]){
 }; 
 
 //Writes voltage to selected registers sequentially with delay in mSec
-void seq_write(float voltage, int regs[], int seq_delay){
+void seq_write(float voltage, std::vector<int> regs, int seq_delay){
 
     digitalWrite(LDACpin, LOW); //when LDAC is low, the input register is transparent
     elapsedMillis timer;
