@@ -96,15 +96,53 @@ High Level Functions
 
 //Resets all DAC outputs to REF voltage (2.5 V) 
 void ref_reset(){
+    
+    for(int i = 0; i < 16*N_DACS; i ++){
+        write_DAC_reg(2.5, i);
+    }
+
+    //ensure LDAC is held low long enough 
+    digitalWrite(LDACpin, LOW);
+    elapsedMicros LDAC_timer; 
+    if (LDAC_timer >= 1){
+        digitalWrite(LDACpin, HIGH);
+    }
 
 }; 
 
 //Writes voltage to selected registers simultaneously
 void sync_write(float voltage, int regs[]){
 
+    for(int i = 0; i < sizeof(regs) - 1; i++){
+        write_DAC_reg(voltage, regs[i]);
+    }
+
+    //ensure LDAC is held low long enough 
+    digitalWrite(LDACpin, LOW);
+    elapsedMicros LDAC_timer; 
+    if (LDAC_timer >= 1){
+        digitalWrite(LDACpin, HIGH);
+    }
+
+
 }; 
 
-//Writes voltage to selected registers sequentially with delay
-void seq_write(float voltage, int regs[], int delay_msec){
+//Writes voltage to selected registers sequentially with delay in mSec
+void seq_write(float voltage, int regs[], int seq_delay){
+
+    digitalWrite(LDACpin, LOW); //when LDAC is low, the input register is transparent
+    elapsedMillis timer;
+    for(int i = 0; i < sizeof(regs) - 1; i++){
+        if(timer >= seq_delay){
+            write_DAC_reg(voltage, regs[i]);
+            timer = 0;
+        }
+    }
+    
+    //ensure LDAC is held low long enough 
+    elapsedMicros LDAC_timer; 
+    if (LDAC_timer >= 1){
+        digitalWrite(LDACpin, HIGH);
+    }
 
 }; 

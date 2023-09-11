@@ -7,6 +7,7 @@
 
 void main(){
 void xfer_data(std::string data);
+void sync_write(int regs[]);
 
     int voltage = 5;
     int reg = 63;
@@ -37,12 +38,23 @@ void xfer_data(std::string data);
     }
 
     //Send data word through SPI
-    xfer_data(data_word);
+    //xfer_data(data_word);
+
+    int gamerino[3] = {1,2,3};
+
+    sync_write(gamerino);
 
 
 
 
 }
+
+void sync_write(int regs[]){
+    for (int i = 0; i < sizeof(regs) - 1; i ++){
+        std::cout << regs[i] << std::endl;
+    }
+
+};
 
 void xfer_data(std::string data){
 

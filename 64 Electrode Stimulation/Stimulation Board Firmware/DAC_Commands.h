@@ -29,7 +29,7 @@ class DAC
     ------------------*/
     void ref_reset(); //Resets all DAC outputs to REF voltage (2.5 V) 
     void sync_write(float voltage, int regs[]); //Writes voltage to selected registers simultaneously
-    void seq_write(float voltage, int regs[], int delay_msec); //Writes voltage to selected registers sequentially with delay
+    void seq_write(float voltage, int regs[], int delay_msec); //Writes voltage to selected registers sequentially with delay in mSec
 };
 
 
