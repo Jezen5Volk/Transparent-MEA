@@ -154,10 +154,9 @@ void seq_write(float voltage, std::vector<int> regs, int seq_delay){
     digitalWrite(LDACpin, LOW); //when LDAC is low, the input register is transparent
     elapsedMillis timer;
     for(int i = 0; i < sizeof(regs) - 1; i++){
-        if(timer >= seq_delay){
-            write_DAC_reg(voltage, regs[i]);
-            timer = 0;
-        }
+        write_DAC_reg(voltage,regs[i]);
+        while(timer <= seq_delay){}; //delay without occupying hardware
+        timer = 0;
     }
     
     //ensure LDAC is held low long enough 
@@ -167,3 +166,49 @@ void seq_write(float voltage, std::vector<int> regs, int seq_delay){
     }
 
 }; 
+
+void p_pulse(int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, float amp_pos, float amp_neg, std::vector<int> regs){
+    
+    //Stimulate each electrode simultaneously
+    if (e_dly == 0){
+        elapsedMicros clock;
+        if(clock <= puls_dur_pos){
+            sync_write(amp_pos, regs);
+        };
+        if(clock > puls_dur_pos && clock < puls_dur_pos + puls_dur_neg){
+        sync_write(amp_neg, regs);
+        };
+        if(clock >= puls_dur_pos + puls_dur_neg){
+        sync_write(2.5, regs); //at pulse end, set back to ref voltage
+        };
+    }
+
+    //Stimulate each electrode with delay between each electrode
+    else{
+        digitalWrite(LDACpin, LOW); //when LDAC is low, the input register is transparent
+        elapsedMillis clock_ms;
+        elapsedMicros clock_us;
+        for(int i = 0; i < sizeof(regs) - 1; i++){
+            while(clock_ms < e_dly){
+                if (clock_us <= puls_dur_pos){
+                    write_DAC_reg(amp_pos, regs[i]); 
+                };
+                if (clock_us > puls_dur_pos && clock_us < puls_dur_pos + puls_dur_neg){
+                    write_DAC_reg(amp_neg, regs[i]);
+                };
+                if (clock_us >= puls_dur_pos + puls_dur_neg){
+                    write_DAC_reg(2.5, regs[i]); //at pulse end, set back to ref voltage
+                };
+            }
+            clock_ms = 0;
+            clock_us = 0;
+        }
+    
+        //ensure LDAC is held low long enough 
+        elapsedMicros LDAC_timer; 
+        if (LDAC_timer >= 1){
+            digitalWrite(LDACpin, HIGH);
+        }
+    }
+
+};
