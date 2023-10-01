@@ -8,6 +8,9 @@
 #define SYNCpin 14
 #define LDACpin 15
 
+#include <string>
+#include <vector> 
+
 class DAC
 {
     public:
