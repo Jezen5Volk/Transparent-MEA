@@ -21,8 +21,28 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
 #include <DAC_Commands.h>
+#include <Programs.h>
 #include <Arduino.h>
 #include <SPI.h>
+
+/*-------------------------------
+USER PROGRAMMABLE HYPERPARAMETERS
+-------------------------------*/
+
+int freq; //frequency in Hz of stimulation signals [Hz]
+int e_dly; //delay between activating sequential electrodes in milliseconds [mS]
+int puls_dur_pos; //duration of positive voltage signal in microseconds [mS] 
+int puls_dur_neg; //duration of negative voltage signal in microseconds [mS]
+int brst_dur; //duration of voltage waveform in seconds [S]
+int quiet_dur; //duration of silent period in seconds [S]
+int rounds; //number of repetitions of burst + quiet periods [unitless]
+float amp_pos; //amplitude of positive voltage in range from (2.5, 5] Volts [V]
+float amp_neg; //amplitude of negative voltage in range from [0, 2.5) Volts [V]
+std::vector<int> e; //containing the electrodes to be stimulated, in order
+
+/*------------------------------
+NOTHING ELSE NEED BE MODIFIED :)
+------------------------------*/
 
 void setup(){
 
@@ -32,5 +52,5 @@ void setup(){
 
 
 void loop(){
-
+    
 };
