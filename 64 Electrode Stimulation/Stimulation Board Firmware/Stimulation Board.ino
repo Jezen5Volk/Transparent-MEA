@@ -25,32 +25,35 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <Arduino.h>
 #include <SPI.h>
 
+PROGRAM stim; //define PROGRAM object for running functions
+
 /*-------------------------------
 USER PROGRAMMABLE HYPERPARAMETERS
 -------------------------------*/
 
-int freq; //frequency in Hz of stimulation signals [Hz]
-int e_dly; //delay between activating sequential electrodes in milliseconds [mS]
-int puls_dur_pos; //duration of positive voltage signal in microseconds [mS] 
-int puls_dur_neg; //duration of negative voltage signal in microseconds [mS]
-int brst_dur; //duration of voltage waveform in seconds [S]
-int quiet_dur; //duration of silent period in seconds [S]
-int rounds; //number of repetitions of burst + quiet periods [unitless]
-float amp_pos; //amplitude of positive voltage in range from (2.5, 5] Volts [V]
-float amp_neg; //amplitude of negative voltage in range from [0, 2.5) Volts [V]
-std::vector<int> e; //containing the electrodes to be stimulated, in order
+int freq = 50;                       //frequency in Hz of stimulation signals [Hz]
+int e_dly = 5;                       //delay between activating sequential electrodes in milliseconds [mS]
+int puls_dur_pos = 1000;             //duration of positive voltage signal in microseconds [uS] 
+int puls_dur_neg = 1000;             //duration of negative voltage signal in microseconds [uS]
+int brst_dur = 60;                   //duration of voltage waveform in seconds [S]
+int quiet_dur = 60;                  //duration of silent period in seconds [S]
+int rounds = 10;                     //number of repetitions of burst + quiet periods [unitless]
+float amp_pos = 3;                   //amplitude of positive voltage in range from (2.5, 5] Volts [V]
+float amp_neg = 1;                   //amplitude of negative voltage in range from [0, 2.5) Volts [V]
+std::vector<int> e = {12, 53, 5, 0}; //electrodes in order of stimulation from [0, 63]
 
 /*------------------------------
 NOTHING ELSE NEED BE MODIFIED :)
 ------------------------------*/
 
 void setup(){
-
-    
-
+    pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_BUILTIN, LOW);
+    stim.start_up();
+    stim.burst(freq, e_dly, puls_dur_pos, puls_dur_neg, brst_dur, quiet_dur, rounds, amp_pos, amp_neg, e);
 };
 
 
 void loop(){
-    
+    digitalWrite(LED_BUILTIN,HIGH); //LED turning on indicates the program has finished
 };

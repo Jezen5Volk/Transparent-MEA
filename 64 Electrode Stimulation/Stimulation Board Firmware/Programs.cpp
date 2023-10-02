@@ -46,22 +46,23 @@ void full_reset(){
 
 };
 
- /*-------------------------
- User Programmable Waveforms
- -------------------------*/
+/*-------------------------
+User Programmable Waveforms
+-------------------------*/
+
 void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int quiet_dur, int rounds, float amp_pos, float amp_neg, std::vector<int> e){ 
 
     /*
     freq: frequency in Hz of stimulation signals [Hz]
     e_dly: delay between activating sequential electrodes in milliseconds [mS]
-    puls_dur_pos: duration of positive voltage signal in microseconds [mS] 
-    puls_dur_neg: duration of negative voltage signal in microseconds [mS]
+    puls_dur_pos: duration of positive voltage signal in microseconds [uS] 
+    puls_dur_neg: duration of negative voltage signal in microseconds [uS]
     brst_dur: duration of voltage waveform in seconds [S]
     quiet_dur: duration of silent period in seconds [S]
     rounds: number of repetitions of burst + quiet periods [unitless]
     amp_pos: amplitude of positive voltage in range from (2.5, 5] Volts [V]
     amp_neg: amplitude of negative voltage in range from [0, 2.5) Volts [V]
-    e: vector containing the electrodes to be stimulated, in order
+    e: electrodes in order of stimulation from [0, 63]
     */
 
     elapsedMillis burst_clck;
@@ -81,4 +82,15 @@ void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur
             // wait and don't be a buffer hog :)
         }
     }
+
+};
+
+void burst_all(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int quiet_dur, int rounds, float amp_pos, float amp_neg){
+    
+    std::vector<int> all_e;
+    for (int i; i < N_DACS*16; i ++){
+        all_e.push_back(i);
+    }
+    burst(freq, e_dly, puls_dur_pos, puls_dur_neg, brst_dur, quiet_dur, rounds, amp_pos, amp_neg, all_e);
+
 };

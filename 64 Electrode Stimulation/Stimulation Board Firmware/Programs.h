@@ -17,8 +17,9 @@ class PROGRAM
     /*-------------------------
     User Programmable Waveforms
     -------------------------*/
-    void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int amp_pos, int amp_neg, std::vector<int> e); 
-   
+    void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int quiet_dur, int rounds, float amp_pos, float amp_neg, std::vector<int> e); 
+    
+    void burst_all(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int quiet_dur, int rounds, float amp_pos, float amp_neg);
 };
 
 #endif 
