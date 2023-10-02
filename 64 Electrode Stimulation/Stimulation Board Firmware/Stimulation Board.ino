@@ -46,6 +46,15 @@ std::vector<int> e = {12, 53, 5, 0}; //electrodes in order of stimulation from [
 NOTHING ELSE NEED BE MODIFIED :)
 ------------------------------*/
 
+
+/*
+    Things to note: 
+        -If you wish to enable all electrodes, replace stim.burst(...) with stim.burst_all();
+            -This will require moving the electrode argument (e)
+
+        -If you wish to stimulate a selection of electrodes simultaneously, set e_dly to 0
+*/
+
 void setup(){
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, LOW);
