@@ -1,5 +1,6 @@
 //Local Headers
-#include <DAC_Commands.h>
+#include "DAC_Commands.h"
+#include "Programs.h"
 
 //STL Headers
 #include <cmath>
@@ -19,7 +20,7 @@ DAC dac;
 Setup
 ---*/
 
-void start_up(){
+void PROGRAM::start_up(){
 
     //Setting up output pins
     pinMode(RESETpin, OUTPUT);
@@ -39,7 +40,7 @@ void start_up(){
 
 };
 
-void full_reset(){
+void PROGRAM::full_reset(){
 
     dac.reset(); //Resets to zero scale
     dac.ref_reset(); //Resets all Dac outputs to REF voltage (2.5 V)
@@ -50,7 +51,7 @@ void full_reset(){
 User Programmable Waveforms
 -------------------------*/
 
-void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int quiet_dur, int rounds, float amp_pos, float amp_neg, std::vector<int> e){ 
+void PROGRAM::burst(unsigned long int freq, unsigned long int e_dly, unsigned long int puls_dur_pos, unsigned long int puls_dur_neg, unsigned long int brst_dur, unsigned long int quiet_dur, int rounds, float amp_pos, float amp_neg, std::vector<int> e){ 
 
     /*
     freq: frequency in Hz of stimulation signals [Hz]
@@ -69,7 +70,7 @@ void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur
     elapsedMillis pulse_delay; 
     elapsedMillis quiet_clck;
 
-    for(int i; i < rounds; i ++){
+    for(int i = 0; i < rounds; i ++){
         burst_clck = 0;
         while (burst_clck < brst_dur*1000){
             if(pulse_delay >= 1000/freq){
@@ -85,10 +86,10 @@ void burst(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur
 
 };
 
-void burst_all(int freq, int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, int quiet_dur, int rounds, float amp_pos, float amp_neg){
+void PROGRAM::burst_all(unsigned long int freq, unsigned long int e_dly, unsigned long int puls_dur_pos, unsigned long int puls_dur_neg, unsigned long int brst_dur, unsigned long int quiet_dur, int rounds, float amp_pos, float amp_neg){
     
     std::vector<int> all_e;
-    for (int i; i < N_DACS*16; i ++){
+    for (int i = 0; i < N_DACS*16; i ++){
         all_e.push_back(i);
     }
     burst(freq, e_dly, puls_dur_pos, puls_dur_neg, brst_dur, quiet_dur, rounds, amp_pos, amp_neg, all_e);

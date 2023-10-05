@@ -1,5 +1,5 @@
 //Local Headers
-#include <DAC_Commands.h>
+#include "DAC_Commands.h"
 
 //STL Headers
 #include <cmath>
@@ -17,7 +17,7 @@
 Low Level Functions
 -----------------*/
 
-void xfer_data(std::string data, int size){
+void DAC::xfer_data(std::string data, int size){
 
     //Convert binary string into array of bytes, MSB First
     std::vector<uint8_t> byte_stream;
@@ -29,7 +29,7 @@ void xfer_data(std::string data, int size){
 
     //Transfer byte stream over SPI, one byte at a time
     digitalWrite(SYNCpin, LOW);
-    for (int i = 0; i < sizeof(byte_stream); i++){
+    for (unsigned int i = 0; i < sizeof(byte_stream); i++){
         SPI.transfer(byte_stream[i]);
     }
     digitalWrite(SYNCpin, HIGH);
@@ -37,7 +37,7 @@ void xfer_data(std::string data, int size){
 };
 
 //Resets to zero scale
-void reset(){
+void DAC::reset(){
 
     digitalWrite(RESETpin, LOW);
     elapsedMicros RESET_timer;
@@ -53,7 +53,7 @@ Medium Level Functions
 --------------------*/
 
 //Daisy Chain Enable
-void DCEN(){
+void DAC::DCEN(){
 
     //Make data strings to transfer
     std::string DCEN_cmd = std::bitset<4>(1000).to_string(); //1000 command: Set up the daisy-chain enable (DCEN) register
@@ -78,7 +78,7 @@ void DCEN(){
 };   
     
 //Write a voltage to a DAC Register
-void write_DAC_reg(float voltage, int reg){
+void DAC::write_DAC_reg(float voltage, int reg){
 
     //Convert to 12 bit voltage + 4 don't care bits
     int v_res = std::floor(voltage/DAC_RES);
@@ -116,7 +116,7 @@ High Level Functions
 ------------------*/
 
 //Resets all DAC outputs to REF voltage (2.5 V) 
-void ref_reset(){
+void DAC::ref_reset(){
     
     for(int i = 0; i < 16*N_DACS; i ++){
         write_DAC_reg(2.5, i);
@@ -132,9 +132,9 @@ void ref_reset(){
 }; 
 
 //Writes voltage to selected registers simultaneously
-void sync_write(float voltage, std::vector<int> regs){
+void DAC::sync_write(float voltage, std::vector<int> regs){
 
-    for(int i = 0; i < sizeof(regs) - 1; i++){
+    for(unsigned int i = 0; i < sizeof(regs) - 1; i++){
         write_DAC_reg(voltage, regs[i]);
     }
 
@@ -149,11 +149,11 @@ void sync_write(float voltage, std::vector<int> regs){
 }; 
 
 //Writes voltage to selected registers sequentially with delay in mSec
-void seq_write(float voltage, std::vector<int> regs, int seq_delay){
+void DAC::seq_write(float voltage, std::vector<int> regs, long unsigned int seq_delay){
 
     digitalWrite(LDACpin, LOW); //when LDAC is low, the input register is transparent
     elapsedMillis timer;
-    for(int i = 0; i < sizeof(regs) - 1; i++){
+    for(unsigned int i = 0; i < sizeof(regs) - 1; i++){
         write_DAC_reg(voltage,regs[i]);
         while(timer <= seq_delay){}; //delay without occupying hardware
         timer = 0;
@@ -161,13 +161,13 @@ void seq_write(float voltage, std::vector<int> regs, int seq_delay){
     
     //ensure LDAC is held low long enough 
     elapsedMicros LDAC_timer; 
-    if (LDAC_timer >= 1){
+    if (LDAC_timer >= 1ULL){
         digitalWrite(LDACpin, HIGH);
     }
 
 }; 
 
-void p_pulse(int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, float amp_pos, float amp_neg, std::vector<int> regs){
+void DAC::p_pulse(unsigned long int e_dly, unsigned long int puls_dur_pos, unsigned long int puls_dur_neg, unsigned long int brst_dur, float amp_pos, float amp_neg, std::vector<int> regs){
     
     //Stimulate each electrode simultaneously
     if (e_dly == 0){
@@ -188,7 +188,7 @@ void p_pulse(int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, float 
         digitalWrite(LDACpin, LOW); //when LDAC is low, the input register is transparent
         elapsedMillis clock_ms;
         elapsedMicros clock_us;
-        for(int i = 0; i < sizeof(regs) - 1; i++){
+        for(unsigned int i = 0; i < sizeof(regs) - 1; i++){
             while(clock_ms < e_dly){
                 if (clock_us <= puls_dur_pos){
                     write_DAC_reg(amp_pos, regs[i]); 

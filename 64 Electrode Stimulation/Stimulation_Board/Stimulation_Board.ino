@@ -20,8 +20,8 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <DAC_Commands.h>
-#include <Programs.h>
+#include "DAC_Commands.h"
+#include "Programs.h"
 #include <Arduino.h>
 #include <SPI.h>
 
@@ -31,16 +31,16 @@ PROGRAM stim; //define PROGRAM object for running functions
 USER PROGRAMMABLE HYPERPARAMETERS
 -------------------------------*/
 
-int freq = 50;                       //frequency in Hz of stimulation signals [Hz]
-int e_dly = 5;                       //delay between activating sequential electrodes in milliseconds [mS]
-int puls_dur_pos = 1000;             //duration of positive voltage signal in microseconds [uS] 
-int puls_dur_neg = 1000;             //duration of negative voltage signal in microseconds [uS]
-int brst_dur = 60;                   //duration of voltage waveform in seconds [S]
-int quiet_dur = 60;                  //duration of silent period in seconds [S]
-int rounds = 10;                     //number of repetitions of burst + quiet periods [unitless]
-float amp_pos = 3;                   //amplitude of positive voltage in range from (2.5, 5] Volts [V]
-float amp_neg = 1;                   //amplitude of negative voltage in range from [0, 2.5) Volts [V]
-std::vector<int> e = {12, 53, 5, 0}; //electrodes in order of stimulation from [0, 63]
+unsigned long int freq = 50;                       //frequency in Hz of stimulation signals [Hz]
+unsigned long int e_dly = 5;                       //delay between activating sequential electrodes in milliseconds [mS]
+unsigned long int puls_dur_pos = 1000;             //duration of positive voltage signal in microseconds [uS] 
+unsigned long int puls_dur_neg = 1000;             //duration of negative voltage signal in microseconds [uS]
+unsigned long int brst_dur = 60;                   //duration of voltage waveform in seconds [S]
+unsigned long int quiet_dur = 60;                  //duration of silent period in seconds [S]
+int rounds = 10;                                   //number of repetitions of burst + quiet periods [unitless]
+float amp_pos = 3;                                 //amplitude of positive voltage in range from (2.5, 5] Volts [V]
+float amp_neg = 1;                                 //amplitude of negative voltage in range from [0, 2.5) Volts [V]
+std::vector<int> e = {12, 53, 5, 0};               //electrodes in order of stimulation from [0, 63]
 
 /*------------------------------
 NOTHING ELSE NEED BE MODIFIED :)

@@ -32,8 +32,8 @@ class DAC
     ------------------*/
     void ref_reset(); //Resets all DAC outputs to REF voltage (2.5 V) 
     void sync_write(float voltage, std::vector<int> regs); //Writes voltage to selected registers simultaneously
-    void seq_write(float voltage, std::vector<int> regs, int delay_msec); //Writes voltage to selected registers sequentially with delay in mSec
-    void p_pulse(int e_dly, int puls_dur_pos, int puls_dur_neg, int brst_dur, float amp_pos, float amp_neg, std::vector<int> regs); 
+    void seq_write(float voltage, std::vector<int> regs, long unsigned int delay_msec); //Writes voltage to selected registers sequentially with delay in mSec
+    void p_pulse(unsigned long int e_dly, unsigned long int puls_dur_pos, unsigned long int puls_dur_neg, unsigned long int brst_dur, float amp_pos, float amp_neg, std::vector<int> regs); 
 
 };
 
