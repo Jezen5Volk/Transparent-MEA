@@ -83,6 +83,7 @@ void PROGRAM::burst(unsigned long int freq, unsigned long int e_dly, unsigned lo
             // wait and don't be a buffer hog :)
         }
     }
+  
 
 };
 
@@ -93,5 +94,6 @@ void PROGRAM::burst_all(unsigned long int freq, unsigned long int e_dly, unsigne
         all_e.push_back(i);
     }
     burst(freq, e_dly, puls_dur_pos, puls_dur_neg, brst_dur, quiet_dur, rounds, amp_pos, amp_neg, all_e);
+  
 
 };

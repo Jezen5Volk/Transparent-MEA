@@ -20,7 +20,7 @@ Low Level Functions
 void DAC::xfer_data(std::string data, int size){
 
     //Convert binary string into array of bytes, MSB First
-    std::vector<uint8_t> byte_stream;
+    uint8_t byte_stream[size];
     for (int i = 0; i < size; i++){
       std::string byte_string = data.substr(i*8, 8);
       uint8_t byte = std::bitset<8>(byte_string).to_ulong();

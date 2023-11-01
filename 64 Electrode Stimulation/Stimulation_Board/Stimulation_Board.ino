@@ -35,9 +35,9 @@ unsigned long int freq = 50;                       //frequency in Hz of stimulat
 unsigned long int e_dly = 5;                       //delay between activating sequential electrodes in milliseconds [mS]
 unsigned long int puls_dur_pos = 1000;             //duration of positive voltage signal in microseconds [uS] 
 unsigned long int puls_dur_neg = 1000;             //duration of negative voltage signal in microseconds [uS]
-unsigned long int brst_dur = 60;                   //duration of voltage waveform in seconds [S]
-unsigned long int quiet_dur = 60;                  //duration of silent period in seconds [S]
-int rounds = 10;                                   //number of repetitions of burst + quiet periods [unitless]
+unsigned long int brst_dur = 30;                   //duration of voltage waveform in seconds [S]
+unsigned long int quiet_dur = 30;                  //duration of silent period in seconds [S]
+int rounds = 2;                                    //number of repetitions of burst + quiet periods [unitless]
 float amp_pos = 3;                                 //amplitude of positive voltage in range from (2.5, 5] Volts [V]
 float amp_neg = 1;                                 //amplitude of negative voltage in range from [0, 2.5) Volts [V]
 std::vector<int> e = {12, 53, 5, 0};               //electrodes in order of stimulation from [0, 63]
@@ -56,13 +56,24 @@ NOTHING ELSE NEED BE MODIFIED :)
 */
 
 void setup(){
+    //Let the user know programming has started
     pinMode(LED_BUILTIN, OUTPUT);
-    digitalWrite(LED_BUILTIN, LOW);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(1000);
+
+    //Run the program
     stim.start_up();
     stim.burst(freq, e_dly, puls_dur_pos, puls_dur_neg, brst_dur, quiet_dur, rounds, amp_pos, amp_neg, e);
+    
+    //End SPI transaction so that the LED can be turned back on
+    SPI.end(); 
 };
 
 
 void loop(){
-    digitalWrite(LED_BUILTIN,HIGH); //LED turning on indicates the program has finished
+    //Blink the LED to indicate that the program has finished
+    digitalWrite(LED_BUILTIN,HIGH); 
+    delay(500);
+    digitalWrite(LED_BUILTIN,LOW);
+    delay(500);
 };
