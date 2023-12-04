@@ -27,6 +27,15 @@ OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 PROGRAM stim; //define PROGRAM object for running functions
 
+/*
+    Things to note: 
+        -If you wish to enable all electrodes, replace stim.burst(...) with stim.burst_all(...);
+
+        -If you wish to stimulate a selection of electrodes simultaneously, set e_dly to 0
+
+        -If you want a longer delay before the program starts running, increase the delay in void setup()
+*/
+
 /*-------------------------------
 USER PROGRAMMABLE HYPERPARAMETERS
 -------------------------------*/
@@ -35,11 +44,11 @@ unsigned long int freq = 50;                       //frequency in Hz of stimulat
 unsigned long int e_dly = 5;                       //delay between activating sequential electrodes in milliseconds [mS]
 unsigned long int puls_dur_pos = 1000;             //duration of positive voltage signal in microseconds [uS] 
 unsigned long int puls_dur_neg = 1000;             //duration of negative voltage signal in microseconds [uS]
-unsigned long int brst_dur = 30;                   //duration of voltage waveform in seconds [S]
-unsigned long int quiet_dur = 30;                  //duration of silent period in seconds [S]
-int rounds = 2;                                    //number of repetitions of burst + quiet periods [unitless]
-float amp_pos = 3;                                 //amplitude of positive voltage in range from (2.5, 5] Volts [V]
-float amp_neg = 1;                                 //amplitude of negative voltage in range from [0, 2.5) Volts [V]
+unsigned long int brst_dur = 55;                   //duration of voltage waveform in seconds [S]
+unsigned long int quiet_dur = 5;                  //duration of silent period in seconds [S]
+int rounds = 3;                                    //number of repetitions of burst + quiet periods [unitless]
+float amp_pos = 5;                                 //amplitude of positive voltage in range from (2.5, 5] Volts [V]
+float amp_neg = 0;                                 //amplitude of negative voltage in range from [0, 2.5) Volts [V]
 std::vector<int> e = {12, 53, 5, 0};               //electrodes in order of stimulation from [0, 63]
 
 /*------------------------------
@@ -47,13 +56,6 @@ NOTHING ELSE NEED BE MODIFIED :)
 ------------------------------*/
 
 
-/*
-    Things to note: 
-        -If you wish to enable all electrodes, replace stim.burst(...) with stim.burst_all();
-            -This will require moving the electrode argument (e)
-
-        -If you wish to stimulate a selection of electrodes simultaneously, set e_dly to 0
-*/
 
 void setup(){
     //Let the user know programming has started
